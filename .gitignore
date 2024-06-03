@@ -7,3 +7,6 @@ api/
 dataset_preprocessing/augmented_dataset/
 dataset_preprocessing/original_dataset/
 dataset_preprocessing/augmented_dataset.json
+cnn_model/training_dataset
+cnn_model/testing_dataset
+cnn_model/
