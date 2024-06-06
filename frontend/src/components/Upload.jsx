@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import { Checkbox, Text, Heading, Button, Stack, Box, Input } from '@chakra-ui/react'
 import { FaFileUpload } from "react-icons/fa";
 
-export const Upload = ({showUpload, onTOSModalOpen, setShowAuthenticating, setShowUpload, setShowResults, setIsReal, setShowError}) => {
+export const Upload = ({showUpload, onTOSModalOpen, setShowAuthenticating, setShowUpload, setShowResults, setIsReal, setConfidence, setShowError}) => {
     const [checkboxIsInvalid, setCheckboxIsInvalid] = useState(false);
     const [dropzoneBorderColor, setDropzoneBorderColor] = useState('brandPurple');
     const [imageFile, setImageFile] = useState(undefined);
@@ -88,6 +88,7 @@ export const Upload = ({showUpload, onTOSModalOpen, setShowAuthenticating, setSh
             if(respone.status === 200){
                 const jsonResponse = await respone.json();
                 setIsReal(jsonResponse.isReal);
+                setConfidence(jsonResponse.confidence);
                 setShowResults(true);
                 setShowAuthenticating(false);
             }else{
@@ -153,7 +154,7 @@ export const Upload = ({showUpload, onTOSModalOpen, setShowAuthenticating, setSh
                     Drop File Here
                 </Heading>
                 <Text textAlign="center" fontFamily={'Poppins'} fontWeight={'medium'} color={'textGrey'} fontSize={'12px'}>
-                    Drag and drop a <Text as={'a'} color={'brandGreen'}>JPG</Text> or <Text as={'a'} color={'brandGreen'}>PNG</Text> image<br/>of the back of your N64 game cartridge here
+                    Maximum File Size: <Text as={'a'} color={'brandGreen'}>10MB</Text><br/>Drag and drop a <Text as={'a'} color={'brandGreen'}>JPG</Text> or <Text as={'a'} color={'brandGreen'}>PNG</Text> image<br/>of the back of your N64 game cartridge here
                 </Text>
                 <Input type={'file'} ref={fileUploadInputRef} onChange={dropzoneInputOnChangeEvent} hidden={true}/>
             </Stack>

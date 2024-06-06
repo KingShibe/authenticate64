@@ -2,7 +2,7 @@ import { Heading, Text, Stack, Box, Image, Button } from '@chakra-ui/react'
 import HappyEmoji  from '../assets/reshot-icon-haha.svg'
 import SadEmoji  from '../assets/reshot-icon-sad.svg'
 
-export const Results = ({ showResults, isReal, setShowUpload, setShowResults }) => {
+export const Results = ({ showResults, isReal, confidence, setShowUpload, setShowResults }) => {
 
     const backToUploadButton = async () => {
         setShowUpload(true);
@@ -43,6 +43,9 @@ export const Results = ({ showResults, isReal, setShowUpload, setShowResults }) 
               <Image src={SadEmoji} alt='Sad Emoji' boxSize='115px' hidden={isReal}/>
               <Heading fontFamily={'Poppins'} fontWeight={'semibold'} color={'white'} fontSize={'18px'}>
                 Your N64 game is <Text as={'a'} hidden={!isReal}>real!</Text> <Text as={'a'} hidden={isReal}>fake</Text>
+              </Heading>
+              <Heading fontFamily={'Poppins'} fontWeight={'semibold'} color={'white'} fontSize={'14px'} mt={-2}>
+                Confidence: {confidence}%
               </Heading>
               <Text textAlign="center" fontFamily={'Poppins'} fontWeight={'medium'} color={'textGrey'} fontSize={'11px'}>
                 This is based off of authenticate64's CNN trained on N64 game<br/>cartridges with a <Text as={'a'} color={'brandGreen'}>95% testing accuracy</Text>. Because our model isn't<br/>100% accurate, it is important that you use this knowledge in<br/>adherence with our Terms of Service.

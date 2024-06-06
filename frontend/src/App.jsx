@@ -13,6 +13,7 @@ function App() {
   const [showResults, setShowResults] = useState(false);
   const [showError, setShowError] = useState(false);
   const [isReal, setIsReal] = useState(true);
+  const [confidence, setConfidence] = useState(0.0);
 
   document.body.style.overflow = "hidden";
 
@@ -39,11 +40,11 @@ function App() {
         p={6}
         my={12}>
           
-        <Upload showUpload={showUpload} onTOSModalOpen={onTOSModalOpen} setShowAuthenticating={setShowAuthenticating} setShowUpload={setShowUpload} setShowResults={setShowResults} setIsReal={setIsReal} setShowError={setShowError}/>
+        <Upload showUpload={showUpload} onTOSModalOpen={onTOSModalOpen} setShowAuthenticating={setShowAuthenticating} setShowUpload={setShowUpload} setShowResults={setShowResults} setIsReal={setIsReal} setConfidence={setConfidence} setShowError={setShowError}/>
 
         <Authenticating showAuthenticating={showAuthenticating} />
 
-        <Results showResults={showResults} isReal={isReal} setShowUpload={setShowUpload} setShowResults={setShowResults}/>
+        <Results showResults={showResults} isReal={isReal} confidence={confidence} setShowUpload={setShowUpload} setShowResults={setShowResults}/>
         
         <Error showError={showError} setShowUpload={setShowUpload} setShowError={setShowError}/>
 
