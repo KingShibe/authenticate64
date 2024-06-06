@@ -42,6 +42,13 @@ export const Upload = ({showUpload, onTOSModalOpen, setShowAuthenticating, setSh
             return;
         }
 
+        //  Maximum file upload size in decimal (1 mb = 1000 * 1000 bytes)
+        if(file.size > (10 * 1000 * 1000)){
+            setDropzoneBorderColor('red');
+            setImageFile(undefined);
+            return;
+        }
+
         if(file.type !== 'image/png' && file.type !== 'image/jpeg'){
             setDropzoneBorderColor('red');
             setImageFile(undefined);
