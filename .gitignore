@@ -3,7 +3,8 @@
 **/.DS_Store
 **/._.DS_Store
 .venv
-api/
+__pycache__/
+api/n64_model1.pth
 dataset_preprocessing/augmented_dataset/
 dataset_preprocessing/original_dataset/
 dataset_preprocessing/augmented_dataset.json
