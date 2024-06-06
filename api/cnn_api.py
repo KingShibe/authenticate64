@@ -32,6 +32,10 @@ model.fc = nn.Linear(num_ftrs, 2)
 model.load_state_dict(torch.load(cnnModelPath))
 model.eval()
 
+@app.route("/", methods=['GET'])
+def home():
+    return '<script type="text/javascript">window.location.href = "https://authenticate64.com"</script>"'
+
 @app.route("/verify", methods=['POST'])
 def verify():
     if 'image' not in request.files:
