@@ -1,6 +1,6 @@
 # authenticate64 Frontend
 
-## Installation
+## Installation (NPM)
 
 ```bash
 git clone https://github.com/KingShibe/authenticate64.git

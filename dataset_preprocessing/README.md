@@ -16,7 +16,7 @@ pip install -r requirements.txt
 
 ## Commands (Windows)
 
-To run the preprocessing Python file (will vary based on system type):
+To run the preprocessing Python file:
 ```bash
 py dataset_preprocessing.py
 ```

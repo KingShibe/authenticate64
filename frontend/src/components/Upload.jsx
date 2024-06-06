@@ -44,6 +44,7 @@ export const Upload = ({showUpload, onTOSModalOpen, setShowAuthenticating, setSh
 
         if(file.type !== 'image/png' && file.type !== 'image/jpeg'){
             setDropzoneBorderColor('red');
+            setImageFile(undefined);
             return;
         }
 
