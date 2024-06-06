@@ -1,7 +1,5 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-# from flask_limiter import Limiter
-# from flask_limiter.util import get_remote_address
 from PIL import Image
 from io import BytesIO
 import torch
@@ -11,18 +9,18 @@ import torch.nn.functional as nnf
 import torch.nn as nn
 
 # Set to True if you are testing locally
-testing = True
+testingLocally = True
+
+# Set to True if you are testing serverside
+testingServerside = False
 
 app = Flask(__name__)
-if testing == True: CORS(app) 
 
-# limiter = Limiter(
-#     key_func=lambda: request.headers.get('X-Forwarded-For'),
-#     app=app,
-#     default_limits=["20 per day", "5 per hour"],
-#     storage_uri="memory://",
-# )
+# Maximum file upload size in binary (1 mb = 1024 * 1024 bytes)
+app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
+if testingLocally == True or testingServerside == True: CORS(app) 
 
+# Set to path of trained PyTorch model
 cnnModelPath = './n64_model1.pth'
 model = resnet18(weights=ResNet18_Weights.DEFAULT)
 
@@ -73,4 +71,4 @@ def verify():
             return jsonify({"isReal": False, "confidence": predictedClassProbability}), 200
 
 if __name__ == "__main__":
-    app.run(port=5050) if testing == True else app.run(host='0.0.0.0')
+    app.run(port=5050) if testingLocally == True else app.run(host='0.0.0.0')

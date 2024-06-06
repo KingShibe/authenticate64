@@ -1,5 +1,9 @@
 # authenticate64 API
 
+## Important Notes
+
+Before running the API, make sure to set whether you are testing locally, serverside, or neither in the Python file. Failure to do so will result in cors issues or incorrect host setup.
+
 ## Installation (Windows)
 
 ```bash
