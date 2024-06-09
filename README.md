@@ -2,7 +2,7 @@
 
 [authenticate 64](https://authenticate64.com) is a sleek ML based way to see if your N64 game is real or fake.
 
-![Upload Page Screenshot](./repoimages/uploadpage.png)
+![Upload Page Screenshot](./repo_images/uploadpage.png)
 
 # Abstract
 

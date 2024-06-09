@@ -1,8 +1,9 @@
 import { useState, useRef } from 'react'
-import { Checkbox, Text, Heading, Button, Stack, Box, Input } from '@chakra-ui/react'
+import { Checkbox, Text, Heading, Button, Stack, Box, Input, Flex } from '@chakra-ui/react'
 import { FaFileUpload } from "react-icons/fa";
+import { IoMdHelpCircleOutline } from "react-icons/io";
 
-export const Upload = ({showUpload, onTOSModalOpen, setShowAuthenticating, setShowUpload, setShowResults, setIsReal, setConfidence, setShowError}) => {
+export const Upload = ({showUpload, onTOSModalOpen, setShowAuthenticating, setShowUpload, setShowResults, setIsReal, setConfidence, setShowError, onHelpModalOpen}) => {
     const [checkboxIsInvalid, setCheckboxIsInvalid] = useState(false);
     const [dropzoneBorderColor, setDropzoneBorderColor] = useState('brandPurple');
     const [imageFile, setImageFile] = useState(undefined);
@@ -115,9 +116,14 @@ export const Upload = ({showUpload, onTOSModalOpen, setShowAuthenticating, setSh
 
     return (
     <>
-        <Heading fontFamily={'Poppins'} fontWeight={'bold'} color={'white'} fontSize={'24px'}>
-            Upload
-        </Heading>
+        <Flex justify={'space-between'}>
+            <Heading fontFamily={'Poppins'} fontWeight={'bold'} color={'white'} fontSize={'24px'}>
+                Upload
+            </Heading>
+            <Stack justify={'center'}>
+                <IoMdHelpCircleOutline color='#00FFA2' size={'28px'} align={'center'} onClick={onHelpModalOpen} cursor={'pointer'}/>
+            </Stack>
+        </Flex>
         
         <Box
         p={4}
@@ -154,7 +160,7 @@ export const Upload = ({showUpload, onTOSModalOpen, setShowAuthenticating, setSh
                     Drop File Here
                 </Heading>
                 <Text textAlign="center" fontFamily={'Poppins'} fontWeight={'medium'} color={'textGrey'} fontSize={'12px'}>
-                    Maximum File Size: <Text as={'a'} color={'brandGreen'}>10MB</Text><br/>Drag and drop a <Text as={'a'} color={'brandGreen'}>JPG</Text> or <Text as={'a'} color={'brandGreen'}>PNG</Text> image<br/>of the back of your N64 game cartridge here
+                    Maximum File Size: <Text as={'a'} color={'brandGreen'}>10MB</Text><br/>Drag and drop a <Text as={'a'} color={'brandGreen'}>JPG</Text> or <Text as={'a'} color={'brandGreen'}>PNG</Text> image
                 </Text>
                 <Input type={'file'} ref={fileUploadInputRef} onChange={dropzoneInputOnChangeEvent} hidden={true}/>
             </Stack>
@@ -163,8 +169,8 @@ export const Upload = ({showUpload, onTOSModalOpen, setShowAuthenticating, setSh
 
         <Stack spacing={4}>
         <Checkbox colorScheme={'brandGreenScheme'} ref={tosCheckboxRef} onChange={checkboxOnChangeEvent} isInvalid={checkboxIsInvalid}>
-            <Text textAlign="center" fontFamily={'Poppins'} fontWeight={'medium'} color={'textGrey'} fontSize={'11px'}>
-            By checking this box, I agree that I have read the <Text as={'a'} color={'brandGreen'} onClick={onTOSModalOpen}>Terms of Service</Text>
+            <Text textAlign="center" fontFamily={'Poppins'} fontWeight={'medium'} color={'textGrey'} fontSize={'11px'} cursor={'default'}>
+            By checking this box, I agree that I have read the <Text as={'a'} color={'brandGreen'} onClick={onTOSModalOpen} cursor={'pointer'}>Terms of Service</Text>
             </Text>
         </Checkbox>
         <Button

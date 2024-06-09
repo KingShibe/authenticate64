@@ -13,19 +13,10 @@ export const TOSModal = ({isTOSModalOpen, onTOSModalClose}) => {
           <ModalCloseButton color={'white'}/>
           <ModalBody>
             <Text fontSize={'lg'} color={'gray.500'} maxWidth={'500px'} textAlign={'center'}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent tristique magna sit amet. Sit amet justo donec enim diam vulputate ut pharetra. Diam quis enim lobortis scelerisque fermentum dui. Pulvinar proin gravida hendrerit lectus a. Posuere lorem ipsum dolor sit amet consectetur adipiscing. A cras semper auctor neque vitae tempus quam pellentesque. Lacinia quis vel eros donec ac.
+              By using this website, you acknowledge that the information provided of whether your N64 game is real or fake is just a prediction. The information provided should not be used to make any decisions and it is merely provided for informative purposes. The creator of this project is not liable for any issues or damages that you incur from the provided information.<br/><br/>Visit authenticate64's <Text as={'a'} color={'brandGreen'} href="https://github.com/KingShibe/authenticate64" target="_blank" rel="noopener noreferrer">GitHub</Text> for more information
             </Text>
           </ModalBody>
           <ModalFooter>
-              {/* <Button
-              bg={'brandPurple'}
-              rounded={'full'}
-              color={'white'}
-              flex={'1 0 auto'}
-              _hover={{ bg: 'blue.500' }}
-              _focus={{ bg: 'blue.500' }}>
-              Close
-            </Button> */}
           </ModalFooter>
         </ModalContent>
       </Modal>
