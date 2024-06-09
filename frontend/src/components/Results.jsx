@@ -48,7 +48,7 @@ export const Results = ({ showResults, isReal, confidence, setShowUpload, setSho
                 Confidence: {confidence}%
               </Heading>
               <Text textAlign="center" fontFamily={'Poppins'} fontWeight={'medium'} color={'textGrey'} fontSize={'11px'}>
-                This is based off of authenticate64's CNN trained on N64 game<br/>cartridges with a <Text as={'a'} color={'brandGreen'}>95% testing accuracy</Text>. Because our model isn't<br/>100% accurate, it is important that you use this knowledge in<br/>adherence with our Terms of Service.
+                This is based off of authenticate64's CNN trained on N64 game<br/>cartridges with a <Text as={'a'} color={'brandGreen'}>98% validation accuracy</Text>. Because our model<br/>isn't 100% accurate, it is important that you use this knowledge in<br/>adherence with our Terms of Service.
               </Text>
           </Stack>
         </Box>
