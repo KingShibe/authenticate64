@@ -11,24 +11,19 @@ import torch.nn as nn
 # Set to True if you are testing locally
 testingLocally = True
 
-# Set to True if you are testing serverside
-testingServerside = False
-
 app = Flask(__name__)
+CORS(app) 
 
 # Maximum file upload size in binary (1 mb = 1024 * 1024 bytes)
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
-if testingLocally == True or testingServerside == True: CORS(app) 
 
 # Set to path of trained PyTorch model
 cnnModelPath = './n64_model1.pth'
+numOfClasses = 2
+
 model = resnet18(weights=ResNet18_Weights.DEFAULT)
-
-# Testing replacing the last fully connected layer
 num_ftrs = model.fc.in_features
-model.fc = nn.Linear(num_ftrs, 2)
-# End test code
-
+model.fc = nn.Linear(num_ftrs, numOfClasses)
 model.load_state_dict(torch.load(cnnModelPath))
 model.eval()
 
