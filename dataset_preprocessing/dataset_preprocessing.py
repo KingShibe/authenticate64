@@ -67,7 +67,6 @@ def augmentImage(datasetFilePath, imageName, newImageName):
     
     return image
 
-
 def augmentDataset():
     fakeOriginalDataset, realOriginalDataset = os.listdir(fakeOriginalDatasetPath), os.listdir(realOriginalDatasetPath)
     fakeOriginalDatasetSize, realOriginalDatasetSize = len(fakeOriginalDataset), len(realOriginalDataset)
@@ -105,5 +104,6 @@ def augmentDataset():
         json.dump(augmentationData, outputFile)
 
     print("Done :)")
-
-augmentDataset()
+    
+if __name__ == "__main__":
+    augmentDataset()
