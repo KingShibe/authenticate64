@@ -18,13 +18,15 @@ CORS(app)
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 
 # Set to path of trained PyTorch model
-cnnModelPath = './n64_model1.pth'
+cnnModelPath = './bestN64Model.pt'
 numOfClasses = 2
+
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 model = resnet18(weights=ResNet18_Weights.DEFAULT)
 num_ftrs = model.fc.in_features
 model.fc = nn.Linear(num_ftrs, numOfClasses)
-model.load_state_dict(torch.load(cnnModelPath))
+model.load_state_dict(torch.load(cnnModelPath), map_location=device)
 model.eval()
 
 @app.route("/", methods=['GET'])
