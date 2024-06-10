@@ -16,7 +16,7 @@ def setupModel(device, numOfClasses):
     model.fc = nn.Linear(num_ftrs, numOfClasses)
     model = model.to(device)
 
-    # Freeze all pretrained layers on our model
+    # Freeze all pretrained layers on the model
     for param in model.parameters():
         param.requires_grad = False
     
@@ -43,11 +43,14 @@ def processData(batchSize):
     
     return trainingLoader, validationLoader
 
-def trainModel(model, device, trainingLoader, validationLoader, numOfEpochs, learningRate, momentum):
+def trainModel(model, device, trainingLoader, validationLoader, numOfEpochs, patience, learningRate, momentum):
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=learningRate, momentum=momentum)
     
     epochs, trainingLosses, validationLosses, trainingAccuracies, validationAccuracies = [], [], [], [], []
+
+    bestValidationLoss = float('inf')
+    numOfNoImproveEpochs = 0
 
     for epoch in range(numOfEpochs):
         model.train()
@@ -86,7 +89,16 @@ def trainModel(model, device, trainingLoader, validationLoader, numOfEpochs, lea
 
         print(f"Epoch {epoch+1} | Training Loss: {round(trainingLoss, 2)} | Validation Loss: {round(validationLoss, 2)} | Training Accuracy: {round(100 * trainingAccuracy, 2)}% | Validation Accuracy: {round(100 * validationAccuracy, 2)}%")
 
-        # Implement Early Stopping
+        # Early Stopping
+        if validationLoss < bestValidationLoss:
+            bestValidationLoss = validationLoss
+            numOfNoImproveEpochs = 0
+            torch.save(model.state_dict(), 'bestN64Model.pt')
+        else:
+            numOfNoImproveEpochs += 1
+            if numOfNoImproveEpochs >= patience:
+                print(f"Early Stopping At Epoch {epoch+1}")
+                break
 
     plotLossCurve(epochs, trainingLosses, validationLosses)
     plotAccuracyCurve(epochs, trainingAccuracies, validationAccuracies)
@@ -135,4 +147,4 @@ if __name__ == "__main__":
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = setupModel(device, numOfClasses=2)
     trainingLoader, validationLoader = processData(batchSize=64)
-    trainModel(model, device, trainingLoader, validationLoader, numOfEpochs=100, learningRate=0.001, momentum=0.9)
+    trainModel(model, device, trainingLoader, validationLoader, numOfEpochs=100, patience=5, learningRate=0.001, momentum=0.9)

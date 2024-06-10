@@ -8,7 +8,7 @@ cd authenticate64/cnn_model
 py -3 -m venv .venv
 .venv\Scripts\activate
 pip install matplotlib
-Go to https://pytorch.org/get-started/locally/ to find the best installation command for PyTorch on your system config
+# Go to https://pytorch.org/get-started/locally/ to find the best installation command for PyTorch on your system config
 ```
 
 ## Commands (Windows)
