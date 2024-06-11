@@ -56,4 +56,4 @@ These hyperparameters yielded the following results (based on the last epoch):
 
 # Conclusions
 
-Overall authenticate64 is a great success with a ML model that has a 97.62% validation accuracy on distinguishing between real and fake USA region N64 games. All of the goals of the project have been met and it is a viable real world solution for consumers to detect whether their N64 games are real or counterfeit. As time goes on, more data regarding fake N64 games will become available and this will allow me to add to the dataset improving the validation accuracy of the model.
+Overall authenticate64 is a great success with a ML model that has a 97.62% validation accuracy on distinguishing between real and fake USA region N64 games. All of the goals of this project have been met and it is a viable real world solution for consumers to detect whether their N64 games are real or counterfeit. As time goes on, more data regarding fake N64 games will become available and this will allow me to add to the dataset improving the validation accuracy of the model.

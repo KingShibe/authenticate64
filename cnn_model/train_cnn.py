@@ -12,8 +12,11 @@ validationDatasetPath = './validation_dataset'
 
 def setupModel(device, numOfClasses):
     model = resnet18(weights=ResNet18_Weights.DEFAULT)
+
+    # Replace last fully connected layer
     num_ftrs = model.fc.in_features
     model.fc = nn.Linear(num_ftrs, numOfClasses)
+    
     model = model.to(device)
 
     # Freeze all pretrained layers on the model
